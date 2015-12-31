@@ -20,7 +20,8 @@ function send_mail($toemail='',$toname='',$fromname='',$content='',$insert_id=0)
 		$mail->AltBody	= '';//副标题
 		$mail->MsgHTML('
 		您在逐梦者表白墙被人表白了，赶快过来看吧！
-		<div style="background:;width:100%;">
+		<br>表白内容：
+                <div style="background:;width:100%;">
 		
 		'.$content.'
 		<br><br>
