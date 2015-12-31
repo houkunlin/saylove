@@ -1,4 +1,4 @@
-<h1 style="text-algin:center;">侯坤林制作的表白墙</h1>
+<h1 style="text-align:center;">侯坤林制作的表白墙</h1>
 <hr>
 <pre>
 目录结构：
