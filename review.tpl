@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>鹿山学院表白墙</title>
+    <title>鹿山逐梦者表白墙</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -34,7 +34,7 @@
       </div>
     </div>
 	<div class="page-header text-center title font">
-	  <h1>表白墙<small>鹿山学院</small></h1>
+	  <h1>表白墙<small>鹿山逐梦者</small></h1>
 	</div>
     <div class="container">
 
@@ -110,8 +110,8 @@ $(function () {
     <div id="footer">
 	  <div class="container">
 		<p class="text-muted text-center">
-		  Copyright © 版权所有 2015 <br>
-		  版权所有 鹿山学院易班学生工作站项目部技术支持
+		  Copyright © 2015 版权所有 <br>
+		  鹿山逐梦者
 		</p>
 	  </div>
 

@@ -1,10 +1,14 @@
 <?php
+
+
+
+echo send_mail('778380017@qq.com','侯坤林','侯坤林222','我喜欢你！');
 function send_mail($toemail='',$toname='',$fromname='',$content='',$insert_id=0){
 	include('../email/class.phpmailer.php');
-	$b_set['mail']['smtp'] = 'smtp.qq.com';//邮箱SMTP
-	$b_set['mail']['user'] = '1184511588@qq.com';//用户名
-	$b_set['mail']['pass'] = 'houzuquan';//密码
-	$b_set['mail']['from'] = '1184511588@qq.com';//发信人地址
+	$b_set['mail']['smtp'] = 'smtp.aliyun.com';//邮箱SMTP
+	$b_set['mail']['user'] = 'hk0901@aliyun.com';//用户名
+	$b_set['mail']['pass'] = 'houkunlin011215';//密码
+	$b_set['mail']['from'] = 'hk0901@aliyun.com';//发信人地址
 	$mail = new PHPMailer(true);
 	$mail->IsSMTP();
 	try {
@@ -19,12 +23,12 @@ function send_mail($toemail='',$toname='',$fromname='',$content='',$insert_id=0)
 		$mail->Subject	= '亲['.$toname.']，您被人表白了';//主标题
 		$mail->AltBody	= '';//副标题
 		$mail->MsgHTML('
-		您在逐梦者表白墙被人表白了，赶快过来看吧！
+		您在鹿山逐梦者表白墙被人表白了，赶快过来看吧！
 		<div style="background:;width:100%;">
 		
 		'.$content.'
-		<br><br>
-		<a href="http://'.$_SERVER['SERVER_NAME'].dirname(dirname($_SERVER['REQUEST_URI'])).'/review.php?uid='.$insert_id.'">点击这里查看详情</a><br><br>
+		
+		<a href="http://'.$_SERVER['SERVER_NAME'].dirname(dirname($_SERVER['REQUEST_URI'])).'/review.php?uid='.$insert_id.'">点击这里查看表白详情</a>
 		(本邮件由鹿山逐梦者发送，请勿回复。)
 		</div>
 		');//正文内容

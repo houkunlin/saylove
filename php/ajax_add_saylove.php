@@ -16,29 +16,42 @@ $ua = $_SERVER['HTTP_USER_AGENT'];
 $time = date("Y-n-j");
 $have = hkl_mysql_query("select * from lovelist where add_ip='{$ip}' and add_time like '%{$time}%' ");
 if ($have[0] == 1002) {
+    savelove($myname,$ta,$email,$content,$add_time,$ip,$ua,$mysqli);
+}elseif ($have[0] == 1010) {
+    $row=$have[1][0];
+    $t1=strtotime($row['add_time']);
+    $t2=time();
+    if($t2-$t1>300000){
+         savelove($myname,$ta,$email,$content,$add_time,$ip,$ua,$mysqli);
+    }else{
+         echo '{"error":"您五分钟内表白过一次了哦！"}';
+    }
+} else {
+    echo '{"error":"表白失败，数据库连接失败！"}';
+}
 
-
+function savelove($myname,$ta,$email,$content,$add_time,$ip,$ua,$mysqli){
 $insert = "insert into `lovelist` set `from`='{$myname}',`to`='{$ta}',`toemail`='{$email}',`content`='{$content}',`add_time`='{$add_time}',`add_ip`='{$ip}',`add_ua`='{$ua}'";
 $re = $mysqli->query($insert);
 $insert_id=$mysqli->insert_id;//插入数据多得的该数据的id值
 if ($re) {
     $updata = "update countlog set `num`=`num`+1 where id='1'";
     $mysqli->query($updata);
-	$email_re='';
+        $email_re='';
 if(eregi("^[_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,3}$",$email)){
-	set_time_limit(300);
-	$email_re=send_mail($email,$ta,$myname,$content,$insert_id);
+        set_time_limit(300);
+        $email_re=send_mail($email,$ta,$myname,$content,$insert_id);
 }else{
-	$email_re='邮箱检测未通过，邮件发送失败！';
+        $email_re='邮箱检测未通过，邮件发送失败！';
 }
 
     echo '{"error":"0","result":"恭喜您，表白成功！'.$email_re.'"}';
 } else {
     echo '{"error":"抱歉，数据库写入失败，表白失败！"}';//.mysqli_error($mysqli);
 }
-}elseif ($have[0] == 1010) {
-    echo '{"error":"您今天已经表白过一次了哦！"}';
-} else {
-    echo '{"error":"表白失败，数据库连接失败！"}';
+
 }
+
+
+
 ?>

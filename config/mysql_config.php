@@ -5,7 +5,7 @@ $mysql_pass="adminadmin";
 $mysql_db="lovewall";
 $mysql_host="localhost";
 $mysql_user="root";
-$mysql_pass="adminadmin";
+$mysql_pass="";
 $mysql_db="lovewall";
 date_default_timezone_set("PRC");
 $mysqli=new mysqli($mysql_host,$mysql_user,$mysql_pass,$mysql_db);
@@ -14,9 +14,9 @@ echo '数据库连接错误';
 }
 $mysqli->query("SET NAMES 'UTF8'"); 
 
-$mysqli->query("SET CHARACTER SET UTF8"); 
+//$mysqli->query("SET CHARACTER SET UTF8"); 
 
-$mysqli->query("SET CHARACTER_SET_RESULTS=UTF8");
+//$mysqli->query("SET CHARACTER_SET_RESULTS=UTF8");
 
 function SqlString(&$value){
 //我写的，好简陋，直接调用特殊字符加反斜杠的函数（只作用于单引号，双引号，反斜线）
